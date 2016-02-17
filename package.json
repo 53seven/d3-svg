@@ -1,0 +1,41 @@
+{
+  "name": "d3-svg",
+  "version": "0.0.0",
+  "description": "Micromodule to return a svg that is selected by d3",
+  "keywords": [
+    "d3",
+    "plugin"
+  ],
+  "license": "MIT",
+  "main": "build/d3-svg.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/53seven/d3-svg",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/53seven/d3-svg.git"
+  },
+  "scripts": {
+    "pretest": "npm run build",
+    "test": "faucet `find test -name '*-test.js'`",
+    "build": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export * from \\\"../index\\\"; export {version};\");' > build/bundle.js && rollup -c rollup.config.js -f umd -u d3-svg -n d3_svg -o build/d3-svg.js -- build/bundle.js",
+    "prepublish": "npm run test && uglifyjs build/d3-svg.js -c -m -o build/d3-svg.min.js && rm -f build/d3-svg.zip && zip -j build/d3-svg.zip -- LICENSE README.md build/d3-svg.js build/d3-svg.min.js"
+  },
+  "author": {
+    "name": "kiernan",
+    "email": "kiernan@537.io",
+    "url": "537.io"
+  },
+  "devDependencies": {
+    "faucet": "0.0",
+    "jsdom": "^7.2.2",
+    "rollup-plugin-commonjs": "^1.4.0",
+    "rollup-plugin-node-resolve": "^1.4.0",
+    "rollup": "0.20.5",
+    "tape": "4",
+    "tape-catch": "^1.0.4",
+    "uglify-js": "2"
+  },
+  "dependencies": {
+    "d3-selection": "^0.6.10"
+  }
+}
