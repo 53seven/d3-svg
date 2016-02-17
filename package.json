@@ -1,6 +1,6 @@
 {
   "name": "d3-svg",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Micromodule to return a svg that is selected by d3",
   "keywords": [
     "d3",
