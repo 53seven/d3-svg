@@ -1,5 +1,7 @@
 # d3-svg
 
+[![build status](https://travis-ci.org/53seven/d3-svg.svg)](https://travis-ci.org/53seven/d3-svg)
+
 A micromodule that appends an svg to the dom and returns it ready to be used by a d3 plugin.
 
 ## Installing
