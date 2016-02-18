@@ -869,7 +869,7 @@
     return svg;
   }
 
-  var version = "0.1.2";
+  var version = "0.1.4";
 
   exports.version = version;
   exports.create = d3_svg;
