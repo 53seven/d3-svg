@@ -20,7 +20,7 @@
     "archive": "rm -f build/d3-svg.zip && zip -j build/d3-svg.zip -- LICENSE README.md build/d3-svg.js build/d3-svg.min.js",
     "pretest": "npm run build",
     "test": "faucet `find test -name '*-test.js'`",
-    "version": "npm run build && npm run minify",
+    "version": "npm run build && npm run minify && git add build/d3-svg.js build/d3-svg.min.js",
     "prepublish": "npm run test && npm run minify && npm run archive"
   },
   "author": {
