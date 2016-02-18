@@ -15,10 +15,16 @@
     "url": "https://github.com/53seven/d3-svg.git"
   },
   "scripts": {
+    "build": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export * from \\\"../index\\\"; export {version};\");' > build/bundle.js && rollup -c rollup.config.js -f umd -u d3-svg -n d3_svg -o build/d3-svg.js -- build/bundle.js",
+    "minify": "uglifyjs build/d3-svg.js -c -m -o build/d3-svg.min.js",
+    "archive": "rm -f build/d3-svg.zip && zip -j build/d3-svg.zip -- LICENSE README.md build/d3-svg.js build/d3-svg.min.js",
+
     "pretest": "npm run build",
     "test": "faucet `find test -name '*-test.js'`",
-    "build": "mkdir -p build && node -e 'process.stdout.write(\"var version = \\\"\" + require(\"./package.json\").version + \"\\\"; export * from \\\"../index\\\"; export {version};\");' > build/bundle.js && rollup -c rollup.config.js -f umd -u d3-svg -n d3_svg -o build/d3-svg.js -- build/bundle.js",
-    "prepublish": "npm run test && uglifyjs build/d3-svg.js -c -m -o build/d3-svg.min.js && rm -f build/d3-svg.zip && zip -j build/d3-svg.zip -- LICENSE README.md build/d3-svg.js build/d3-svg.min.js"
+
+    "preversion": "npm run build && npm run minify",
+
+    "prepublish": "npm run test && npm run minify && npm run archive"
   },
   "author": {
     "name": "kiernan",
