@@ -4,9 +4,11 @@
   factory((global.d3_svg = {}));
 }(this, function (exports) { 'use strict';
 
+  var xhtml = "http://www.w3.org/1999/xhtml";
+
   var namespaces = {
     svg: "http://www.w3.org/2000/svg",
-    xhtml: "http://www.w3.org/1999/xhtml",
+    xhtml: xhtml,
     xlink: "http://www.w3.org/1999/xlink",
     xml: "http://www.w3.org/XML/1998/namespace",
     xmlns: "http://www.w3.org/2000/xmlns/"
@@ -22,9 +24,9 @@
     return function() {
       var document = this.ownerDocument,
           uri = this.namespaceURI;
-      return uri && uri !== document.documentElement.namespaceURI
-          ? document.createElementNS(uri, name)
-          : document.createElement(name);
+      return uri === xhtml && document.documentElement.namespaceURI === xhtml
+          ? document.createElement(name)
+          : document.createElementNS(uri, name);
     };
   }
 
@@ -867,7 +869,7 @@
     return svg;
   }
 
-  var version = "0.1.1";
+  var version = "0.1.2";
 
   exports.version = version;
   exports.create = d3_svg;
