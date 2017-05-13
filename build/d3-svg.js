@@ -872,7 +872,7 @@ function d3_svg(elem, opts) {
   return svg;
 }
 
-var version = "0.2.1";
+var version = "0.2.2";
 
 exports.version = version;
 exports.create = d3_svg;
