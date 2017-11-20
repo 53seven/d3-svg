@@ -2,9 +2,11 @@ import npm from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 
 export default {
-  entry: 'index.js',
+  input: 'index.js',
   plugins: [npm({jsnext: true}), commonjs({})],
   moduleId: 'd3-svg',
-  moduleName: 'd3-svg',
-  format: 'umd'
+  name: 'd3-svg',
+  output: {
+    format: 'umd'
+  }
 };
