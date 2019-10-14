@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "faucet": "0.0",
-    "jsdom": "^11.0.0",
+    "jsdom": "^15.2.0",
     "rollup-plugin-commonjs": "^9.0.0",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup": "0.56.2",
